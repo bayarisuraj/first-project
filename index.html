@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>QR code </title>
+      <link rel="stylesheet" href="qr.css">
+    </head>
+  <body>
+    <nav>
+      <ul>
+          <li><a href="#home">home</a></li>
+          <li><a href="#news">news</a></li>
+          <li><a href="#content">content</a></li>
+          <li><a href="#info">info</a></li>
+          <li class="top-right"><a href="#signup">sign up</a></li>
+          <li class="top-right"><a href="#login">log in</a></li>
+      </ul>
+    </nav>
+    <hr style="margin-top: 12px;">
+    <div>
+        <p>This is a website where you can generate anything into <span>QR code</span> </p>
+        <hr>
+    </div>
+    
+  <div class="container">
+    <p><h2>Enter text or URL</h2></p>
+    <input type="text" placeholder="Text or URL" id="qrText">
+
+    <div id="imgBox">
+      <img src="" id="qrImage">
+  </div>
+  
+    <button onclick="generateQR()">Generate QR Code</button>
+
+  </div>
+
+  <!-- <div id="imgBox">
+     <img src="" id="qrImage">
+  </div> -->
+ 
+    <div>
+        
+          <label for="name">Username:</label>
+            <input type="text" placeholder="username">
+            <br>
+            <label for="pword">Password:</label>
+            <input type="password" placeholder="password" name="pword">
+            <br>
+            <button type="submit">Submit</button>
+            </div>
+  <footer class="foot-container">
+    <div>
+          <ul class="down">
+            <li class="about"><a href="#">Info:</a></li>
+            <li class="about"><a href="#">About:</a></li>
+              <li><a href=""> <p >&copy;copyright <em>BAYARI </em><b>Hands & Brains:</b></p></a></li>
+          </ul>
+    </div>
+   
+     
+  </footer>
+
+  <script>
+
+    let imgBox = document.getElementById("imgBox");
+    let qrImage = document.getElementById("qrImage");
+    let qrText = document.getElementById("qrText");
+
+    function generateQR(){
+      if(qrText.value.length > 0){
+        qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="
+      + qrText.value;
+      imgBox.classList.add("show-img");
+      }else{
+      qrText.classList.add('error');
+      setTimeout(()=>{
+        qrText.classList.remove('error');
+    },1000);
+
+      }
+      
+    }
+  </script>
+
+ </body>
+</html>
